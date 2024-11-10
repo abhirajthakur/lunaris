@@ -24,7 +24,7 @@ const socialLinks = [
   },
 ];
 
-export default function Footer() {
+export function Footer() {
   return (
     <footer className="bg-black border-t border-neutral-800">
       <div className="max-w-7xl mx-auto px-4 py-12">

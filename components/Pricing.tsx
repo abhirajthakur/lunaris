@@ -1,10 +1,10 @@
 "use client";
 
-import { CheckCircle2Icon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { SparklesCore } from "@/components/ui/sparkles";
 import { motion } from "framer-motion";
+import { CheckCircle2Icon } from "lucide-react";
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -40,21 +40,22 @@ function PricingCard({
         }`}
       >
         {popular && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="absolute -top-4 left-1/2 transform -translate-x-1/2"
-          >
-            <span className="bg-blue-500 text-white px-4 py-1 rounded-full text-sm font-medium shadow-lg">
+          <div className="absolute -top-3 inset-x-0 flex justify-center">
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="bg-gradient-to-r from-blue-500 to-purple-500 px-4 py-1 rounded-full text-sm font-medium shadow-lg"
+            >
               Most Popular
-            </span>
-          </motion.div>
+            </motion.div>
+          </div>
         )}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.1 }}
+          className={popular ? "pt-4" : ""}
         >
           <h3 className="text-2xl font-bold mb-2">{title}</h3>
           <div className="mb-6">
@@ -80,7 +81,7 @@ function PricingCard({
           <Button
             className={`w-full transition-all duration-300 ${
               popular
-                ? "bg-blue-500 hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/20"
+                ? "bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 hover:shadow-lg hover:shadow-blue-500/20"
                 : "bg-neutral-800 hover:bg-neutral-700"
             } text-white`}
           >
@@ -92,7 +93,7 @@ function PricingCard({
   );
 }
 
-export default function Pricing() {
+export function Pricing() {
   return (
     <section className="py-24 bg-neutral-950 relative overflow-hidden">
       <div className="container mx-auto px-4">

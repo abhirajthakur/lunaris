@@ -1,6 +1,15 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Logo } from "@/components/ui/logo";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   BarChart3,
   CreditCard,
@@ -12,22 +21,15 @@ import {
   Settings,
   Users,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  AreaChart,
   Area,
+  AreaChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
 } from "recharts";
 
 const data = [
@@ -64,14 +66,18 @@ const recentInvoices = [
 ];
 
 export default function DashboardPage() {
+  const router = useRouter();
+
+  const handleNewItem = (type: "invoice" | "expense" | "client") => {
+    router.push(`/dashboard/new-${type}`);
+  };
+
   return (
     <div className="flex min-h-screen bg-background">
       {/* Sidebar */}
       <aside className="hidden lg:flex w-64 flex-col fixed inset-y-0 z-50 border-r bg-card">
         <div className="p-6">
-          <h2 className="text-2xl font-bold bg-gradient-to-r from-primary to-chart-1 bg-clip-text text-transparent">
-            InvoicePro
-          </h2>
+          <Logo />
         </div>
         <nav className="flex-1 p-4">
           <div className="space-y-1">
@@ -119,10 +125,19 @@ export default function DashboardPage() {
                     New
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent>
-                  <DropdownMenuItem>New Invoice</DropdownMenuItem>
-                  <DropdownMenuItem>New Expense</DropdownMenuItem>
-                  <DropdownMenuItem>New Client</DropdownMenuItem>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuItem onClick={() => handleNewItem("invoice")}>
+                    <FileText className="mr-2 h-4 w-4" />
+                    New Invoice
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => handleNewItem("expense")}>
+                    <Receipt className="mr-2 h-4 w-4" />
+                    New Expense
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => handleNewItem("client")}>
+                    <Users className="mr-2 h-4 w-4" />
+                    New Client
+                  </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             </div>

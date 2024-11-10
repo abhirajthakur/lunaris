@@ -66,20 +66,20 @@ function FeatureCard({
       viewport={{ once: true }}
       whileHover={{ y: -5 }}
       transition={{ duration: 0.3 }}
-      className="group relative h-full"
+      className="group relative"
     >
       <Card
         onMouseMove={handleMouseMove}
-        className="h-full p-8 bg-neutral-900/50 border-neutral-800 overflow-hidden relative"
+        className="h-full p-8 bg-neutral-900/50 border-neutral-800 overflow-hidden relative transition-all duration-300 hover:border-blue-500/50"
       >
         <motion.div
-          className={`absolute inset-0 bg-gradient-radial ${color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
+          className="pointer-events-none absolute -inset-px rounded-xl opacity-0 group-hover:opacity-100 transition-all duration-300"
           style={{
             background: useMotionTemplate`
               radial-gradient(
                 250px circle at ${mouseX}px ${mouseY}px,
-                var(--tw-gradient-from),
-                var(--tw-gradient-to)
+                ${color},
+                transparent 80%
               )`,
           }}
         />
@@ -99,11 +99,11 @@ function FeatureCard({
   );
 }
 
-export default function Features() {
+export function Features() {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <section className="py-10 bg-black relative overflow-hidden">
+    <section className="py-24 bg-black relative overflow-hidden">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0 }}
@@ -177,8 +177,6 @@ export default function Features() {
           </Button>
         </motion.div>
       </div>
-
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-black to-neutral-950 pointer-events-none" />
     </section>
   );
 }

@@ -1,7 +1,8 @@
+import { NextAuthProvider } from "@/components/providers/next-auth-provider";
+import { ThemeProvider } from "@/components/providers/theme-provider";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -15,8 +16,9 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Freelancer Suite - Invoice & Expense Manager",
-  description: "Professional invoice and expense management for freelancers",
+  title: "Lunify - Smart Freelance Business Management",
+  description:
+    "Streamline your freelance business with intelligent invoicing, expense tracking, and financial analytics.",
 };
 
 export default function RootLayout({
@@ -29,14 +31,16 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem={false}
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+        <NextAuthProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem={false}
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+        </NextAuthProvider>
       </body>
     </html>
   );

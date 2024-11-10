@@ -1,9 +1,9 @@
 "use client";
 
-import Hero from "@/components/Hero";
-import Features from "@/components/Features";
-import Pricing from "@/components/Pricing";
-import Footer from "@/components/Footer";
+import { Features } from "@/components/Features";
+import { Footer } from "@/components/Footer";
+import { Hero } from "@/components/Hero";
+import { Pricing } from "@/components/Pricing";
 
 export default function Home() {
   return (
