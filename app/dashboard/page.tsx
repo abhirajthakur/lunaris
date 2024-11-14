@@ -16,11 +16,13 @@ import {
   DollarSign,
   Download,
   FileText,
+  LogOut,
   Plus,
   Receipt,
   Settings,
   Users,
 } from "lucide-react";
+import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import {
   Area,
@@ -100,6 +102,16 @@ export default function DashboardPage() {
             ))}
           </div>
         </nav>
+        <div className="p-4 border-t">
+          <Button
+            variant="ghost"
+            className="w-full justify-center text-red-500 hover:text-red-600 hover:bg-red-50"
+            onClick={() => signOut()}
+          >
+            <LogOut className="mr-2 h-4 w-4" />
+            Logout
+          </Button>
+        </div>
       </aside>
 
       {/* Main Content */}

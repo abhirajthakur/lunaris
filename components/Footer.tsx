@@ -8,19 +8,16 @@ const socialLinks = [
     image: "/x.svg",
     href: "#",
     label: "X (Twitter)",
-    hoverColor: "#000000",
   },
   {
     image: "/github.svg",
     href: "#",
     label: "GitHub",
-    hoverColor: "#ffffff",
   },
   {
     image: "/linkedin.svg",
     href: "#",
     label: "LinkedIn",
-    hoverColor: "#0A66C2",
   },
 ];
 
@@ -75,8 +72,7 @@ export function Footer() {
                 </div>
                 <span className="sr-only">{social.label}</span>
                 <motion.div
-                  className="absolute -inset-2 rounded-full opacity-0 group-hover:opacity-20"
-                  style={{ backgroundColor: social.hoverColor }}
+                  className="absolute hover:invert -inset-2 rounded-full opacity-0 group-hover:opacity-20"
                   initial={false}
                   whileHover={{ opacity: 0.2 }}
                 />

@@ -16,7 +16,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Lunify - Smart Freelance Business Management",
+  title: "Lunify",
   description:
     "Streamline your freelance business with intelligent invoicing, expense tracking, and financial analytics.",
 };
